@@ -1,0 +1,11 @@
+{
+  "active": true,
+  "iteration": 1,
+  "max_iterations": 100,
+  "started_at": "2026-04-08T14:22:39.150Z",
+  "prompt": "ralph @.claude/prd.md 実装して。",
+  "session_id": "2d3bbfc7-2f79-4a4f-bc96-3b4b115a19d3",
+  "project_path": "/Users/aka23/Projects/8tools",
+  "linked_ultrawork": true,
+  "last_checked_at": "2026-04-08T14:22:39.151Z"
+}

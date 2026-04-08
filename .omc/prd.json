@@ -1,0 +1,128 @@
+{
+  "project": "8tools.org",
+  "stories": [
+    {
+      "id": "US-001",
+      "title": "Project scaffold",
+      "description": "Initialize Next.js 15 App Router project with Tailwind CSS, shadcn/ui, TypeScript strict, Inter + Noto Sans JP fonts",
+      "priority": 1,
+      "passes": false,
+      "acceptanceCriteria": [
+        "package.json exists with next@15, react@19, tailwindcss, typescript dependencies",
+        "tsconfig.json has strict: true",
+        "tailwind.config.ts includes accent color #D32F2F",
+        "Inter and Noto Sans JP fonts configured in layout.tsx",
+        "npm run build succeeds with zero errors"
+      ]
+    },
+    {
+      "id": "US-002",
+      "title": "Common layout: Header, Footer, ToolLayout",
+      "description": "Shared navigation (PC: logo left, About/Contact right; mobile: hamburger), footer (PP, terms, copyright), ToolLayout wrapper for tool pages",
+      "priority": 2,
+      "passes": false,
+      "acceptanceCriteria": [
+        "src/components/Header.tsx renders logo, About link, Contact link on desktop, hamburger on mobile",
+        "src/components/Footer.tsx renders privacy, terms links and copyright 2026",
+        "src/components/tools/ToolLayout.tsx exists with back-to-list link, title, description, disclaimer slots",
+        "Root layout.tsx includes Header and Footer",
+        "Navigation links point to correct paths (/, /about, /contact, /privacy, /terms)"
+      ]
+    },
+    {
+      "id": "US-003",
+      "title": "Tools metadata (tools.json)",
+      "description": "Create src/data/tools.json with all 11 tools: slug, name, description, category",
+      "priority": 3,
+      "passes": false,
+      "acceptanceCriteria": [
+        "src/data/tools.json contains 11 tool entries",
+        "Each entry has slug, name, description, category fields",
+        "Slugs match PRD: disability-employment, cbm-calculator, overtime-36, concrete-volume, 106wall, utilization-rate, man-day, recruitment-cost, shift-labor-cost, building-area, depreciation",
+        "Categories match PRD: 人事・労務, 物流, 建設・土木, 制度変更, 経理, 不動産, 飲食・小売"
+      ]
+    },
+    {
+      "id": "US-004",
+      "title": "Top page: tool grid + category filter + UGA request",
+      "description": "Homepage with UGA request input, category filter buttons, 3-column tool card grid (no images)",
+      "priority": 4,
+      "passes": false,
+      "acceptanceCriteria": [
+        "src/app/page.tsx renders UGA request input with placeholder 'どんなツールが欲しいですか？'",
+        "Note under input: '入力内容はツール開発の参考に使用します'",
+        "Category filter buttons for all 7 categories",
+        "Tool cards displayed in 3-column grid on desktop, same-size cards, no images",
+        "Clicking a tool card navigates to /tools/[slug]",
+        "Category filter filters the displayed tools"
+      ]
+    },
+    {
+      "id": "US-005",
+      "title": "Static pages: About, Contact, Privacy, Terms",
+      "description": "4 static pages with appropriate content",
+      "priority": 5,
+      "passes": false,
+      "acceptanceCriteria": [
+        "src/app/about/page.tsx renders About page in Japanese",
+        "src/app/contact/page.tsx has form with name, email, message fields",
+        "src/app/privacy/page.tsx renders privacy policy in Japanese",
+        "src/app/terms/page.tsx renders terms of service in Japanese",
+        "All pages use consistent layout with Header/Footer"
+      ]
+    },
+    {
+      "id": "US-006",
+      "title": "Tools 1-4: disability-employment, cbm-calculator, overtime-36, concrete-volume",
+      "description": "Implement first 4 tools per PRD spec using ToolLayout",
+      "priority": 6,
+      "passes": false,
+      "acceptanceCriteria": [
+        "disability-employment: input employees -> outputs required hires (ceil(n*0.027)), shortfall, levy (50000/person/month)",
+        "cbm-calculator: input L/W/H(cm) + qty -> outputs CBM, sai, volume weight (air/sea/truck)",
+        "overtime-36: input 12 months of overtime -> outputs diff from 45h/month and 360h/year limits, highlights exceeded months",
+        "concrete-volume: input area(m2) + thickness(cm) -> outputs volume(m3), +10% margin, mixer truck count (4.25m3/truck)",
+        "All 4 use ToolLayout with title, description, input, calculate button, results, formula explanation, disclaimer"
+      ]
+    },
+    {
+      "id": "US-007",
+      "title": "Tools 5-8: 106wall, utilization-rate, man-day, recruitment-cost",
+      "description": "Implement tools 5-8 per PRD spec",
+      "priority": 7,
+      "passes": false,
+      "acceptanceCriteria": [
+        "106wall: input hourly wage + weekly hours -> outputs social insurance eligibility, annual income, estimated take-home change",
+        "utilization-rate: input planned time, actual time, production count, defect count -> outputs utilization %, defect %, yield %",
+        "man-day: input people, days, optional unit price -> outputs man-days, estimated cost",
+        "recruitment-cost: input media cost, personnel cost, referral fees, applications, hires -> outputs cost-per-hire, cost-per-application",
+        "All 4 use ToolLayout pattern"
+      ]
+    },
+    {
+      "id": "US-008",
+      "title": "Tools 9-11: shift-labor-cost, building-area, depreciation",
+      "description": "Implement final 3 tools per PRD spec",
+      "priority": 8,
+      "passes": false,
+      "acceptanceCriteria": [
+        "shift-labor-cost: input hourly wage, people, hours/day, days -> outputs daily/weekly/monthly labor cost",
+        "building-area: input land area(m2), FAR(%), BCR(%) -> outputs max building area, max total floor area",
+        "depreciation: input completion year/month, structure type (wood/RC/steel) -> outputs building age, statutory useful life, remaining useful life, depreciation rate",
+        "All 3 use ToolLayout pattern"
+      ]
+    },
+    {
+      "id": "US-009",
+      "title": "Build + typecheck pass",
+      "description": "Ensure the entire project builds and typechecks cleanly",
+      "priority": 9,
+      "passes": false,
+      "acceptanceCriteria": [
+        "npm run build succeeds with exit code 0",
+        "npx tsc --noEmit succeeds with exit code 0",
+        "npx biome check . reports no errors (or biome is configured and passes)"
+      ]
+    }
+  ]
+}
