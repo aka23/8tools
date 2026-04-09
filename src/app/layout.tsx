@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, Noto_Sans_JP } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -29,6 +30,24 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="ja" className={cn(inter.variable, notoSansJP.variable)}>
+			<head>
+				{process.env.NEXT_PUBLIC_GA_ID && (
+					<>
+						<Script
+							src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+							strategy="afterInteractive"
+						/>
+						<Script id="gtag-init" strategy="afterInteractive">
+							{`
+								window.dataLayer = window.dataLayer || [];
+								function gtag(){dataLayer.push(arguments);}
+								gtag('js', new Date());
+								gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+							`}
+						</Script>
+					</>
+				)}
+			</head>
 			<body className="min-h-screen flex flex-col bg-background text-foreground font-sans">
 				<Header />
 				{children}
