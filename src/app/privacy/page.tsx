@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "プライバシーポリシー — 8tools.org",
-	description: "8tools.orgのプライバシーポリシー",
+	title: "プライバシーポリシー｜8TOOLS",
+	description: "8TOOLSのプライバシーポリシーページです。個人情報の取り扱いについてご確認ください。",
 };
 
 export default function PrivacyPage() {

@@ -1,6 +1,6 @@
-# CLAUDE.md — 8tools.org
+# CLAUDE.md — 8TOOLS
 
-8tools.orgは無料Webツール集。計算・変換ツールを量産するサイト。
+8TOOLSは無料Webツール集。計算・変換ツールを量産するサイト。
 
 ## コマンド
 - Dev: `npm run dev`

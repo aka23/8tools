@@ -19,8 +19,8 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-	title: "8tools.org — 無料Webツール集",
-	description: "業務で使える無料の計算・変換ツールを集めたサイトです。",
+	title: "【2026年最新】8TOOLS｜業務で使える無料計算ツール集",
+	description: "パートの106万の壁・36協定の残業管理・手取り計算まで。業務で即使える無料Webツールを21本公開中。計算・変換・シミュレーターを一覧で探せます。",
 };
 
 export default function RootLayout({

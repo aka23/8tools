@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "利用規約 — 8tools.org",
-	description: "8tools.orgの利用規約",
+	title: "利用規約｜8TOOLS",
+	description: "8TOOLSの利用規約ページです。サービスのご利用にあたっての規約をご確認ください。",
 };
 
 export default function TermsPage() {

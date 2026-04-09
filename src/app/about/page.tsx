@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-	title: "About — 8tools.org",
-	description: "8tools.orgについて",
+	title: "8TOOLSについて｜1人開発×AIで作る業務ツールサイト",
+	description: "8TOOLSはDA凡夫が1人で開発・運営する無料Webツール集です。ビジネス現場で本当に役立つ計算ツールを量産しています。開発の経緯やコンセプトをご紹介します。",
 };
 
 export default function AboutPage() {
