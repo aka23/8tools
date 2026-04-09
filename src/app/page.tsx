@@ -22,64 +22,13 @@ const categories = [
 
 export default function Home() {
 	const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-	const [request, setRequest] = useState("");
-	const [requestSent, setRequestSent] = useState(false);
-
 	const filtered = selectedCategory
 		? tools.filter((t) => t.category === selectedCategory)
 		: tools;
 
-	async function handleRequest() {
-		if (!request.trim()) return;
-		const message = request.trim();
-		setRequestSent(true);
-		setRequest("");
-		try {
-			await fetch("/api/request", {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ message }),
-			});
-		} catch {
-			// リクエスト送信失敗は握りつぶす（UX優先）
-		}
-	}
-
 	return (
 		<main className="flex-1">
 			<div className="max-w-5xl mx-auto px-4 py-8">
-				{/* UGA Request */}
-				<div className="mb-8">
-					<div className="flex gap-2">
-						<input
-							type="text"
-							value={request}
-							onChange={(e) => {
-								setRequest(e.target.value);
-								setRequestSent(false);
-							}}
-							placeholder="どんなツールが欲しいですか？"
-							className="flex-1 border border-input rounded-md px-3 py-2 text-sm"
-						/>
-						<button
-							type="button"
-							onClick={handleRequest}
-							className="bg-primary text-primary-foreground px-4 py-2 rounded-md text-sm font-medium hover:opacity-90"
-						>
-							送信
-						</button>
-					</div>
-					{requestSent ? (
-						<p className="text-xs text-primary mt-1">
-							リクエストを送信しました。ありがとうございます！
-						</p>
-					) : (
-						<p className="text-xs text-muted-foreground mt-1">
-							入力内容はツール開発の参考に使用します
-						</p>
-					)}
-				</div>
-
 				{/* Category Filter */}
 				<div className="flex flex-wrap gap-2 mb-6">
 					<button
