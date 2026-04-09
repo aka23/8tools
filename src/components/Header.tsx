@@ -10,7 +10,7 @@ export function Header() {
 		<header className="border-b border-border">
 			<div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
 				<Link href="/" className="text-xl font-bold text-primary">
-					8tools.org
+					8TOOLS
 				</Link>
 
 				{/* Desktop nav */}
