@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import { ToolLayout } from "@/components/tools/ToolLayout";
+import { ArticleSection } from "@/components/tools/ArticleSection";
+import { FaqAccordion } from "@/components/tools/FaqAccordion";
+import { RelatedTools } from "@/components/tools/RelatedTools";
 
 type InputMode = "monthly" | "annual";
 
@@ -361,44 +364,112 @@ export default function TakeHomePayPage() {
 					</div>
 				)}
 
-				<div className="mt-8 space-y-3 text-sm text-muted-foreground">
-					<h2 className="text-base font-semibold text-foreground">
-						計算式について
-					</h2>
-					<p>
-						<strong>健康保険料</strong>：月収 ×
-						5.0%（本人負担分の概算。実際は標準報酬月額・組合により異なる）
+				<ArticleSection id="intro" title="こんなときに便利です">
+					<p className="leading-relaxed">
+						「額面30万円なのに手取りは24万円…なぜこんなに引かれるの？」そんな疑問を持ったことはありませんか。
+						社会保険料率は毎年更新され、賞与月と通常月で手取りが変わります。扶養家族の有無でも大きく変動します。
 					</p>
-					<p>
-						<strong>厚生年金保険料</strong>：月収 ×
-						9.15%（本人負担分。2025年度）
+					<p className="leading-relaxed">
+						額面月収または年収を入力するだけで、健康保険・厚生年金・雇用保険・所得税・住民税の内訳つきで手取り額がわかります。
 					</p>
-					<p>
-						<strong>雇用保険料</strong>：月収 ×
-						0.6%（一般の事業・本人負担分。2025年度）
+				</ArticleSection>
+
+				<ArticleSection id="how-to-use" title="使い方（4ステップ）">
+					<ol className="list-decimal list-inside space-y-2 leading-relaxed">
+						<li>「月収で入力」か「年収で入力」を選択</li>
+						<li>額面金額を入力（例：月収300,000円）</li>
+						<li>年齢・扶養人数・都道府県を入力</li>
+						<li>「計算する」ボタンを押す → 手取り月収・年収と控除内訳が表示されます</li>
+					</ol>
+					<div className="bg-secondary/50 border border-border rounded-lg p-4 mt-2">
+						<p className="text-xs font-medium text-foreground mb-1">入力例</p>
+						<p>月収30万円・30歳・扶養0人・東京都 → 手取り月収約24万円（健保15,000円・年金27,450円・雇保1,800円・所得税7,500円・住民税15,000円）</p>
+					</div>
+				</ArticleSection>
+
+				<ArticleSection id="background" title="手取り額が決まる仕組み">
+					<p className="leading-relaxed">
+						給与から引かれるものは大きく「社会保険料」と「税金」の2種類です。社会保険料（健康保険・厚生年金・雇用保険）が先に引かれ、その合計額が所得税・住民税の計算にも影響します。
 					</p>
-					<p>
-						<strong>給与所得控除</strong>
-						：年収に応じて55万円〜195万円の控除（2020年度改正後）
+					<p className="font-medium text-foreground mt-2">2025年度の主な保険料率（本人負担分）</p>
+					<ul className="list-disc list-inside space-y-1">
+						<li>健康保険：月収 × 5.0%（協会けんぽ概算）</li>
+						<li>厚生年金：月収 × 9.15%</li>
+						<li>雇用保険：月収 × 0.6%（一般の事業）</li>
+						<li>所得税：課税所得に対して5%〜45%の超過累進課税（復興特別所得税2.1%を加算）</li>
+						<li>住民税：課税所得 × 10%（概算）</li>
+					</ul>
+					<div className="border-l-4 border-primary bg-secondary/50 p-4 rounded-r-lg mt-4">
+						<p className="text-sm font-medium text-foreground mb-1">注意ポイント：住民税の罠</p>
+						<p>住民税は「前年の所得」に基づいて課税されます。転職1年目は前職の高い年収をもとに住民税が計算されるため、年収が下がっても住民税だけ高いまま、という現象が起きます。</p>
+					</div>
+				</ArticleSection>
+
+				<ArticleSection id="use-cases" title="こんなケースで使われています">
+					<div className="space-y-4">
+						<div>
+							<p className="font-medium text-foreground">転職検討者の比較シミュレーション</p>
+							<p className="mt-1 leading-relaxed">
+								額面年収500万のオファーが来たとき、現職の額面400万と手取りで比較。
+								年収アップ分のうち社保・税金でどれだけ引かれるかを確認してから判断できます。
+							</p>
+						</div>
+						<div>
+							<p className="font-medium text-foreground">配偶者の扶養調整</p>
+							<p className="mt-1 leading-relaxed">
+								配偶者が扶養に入る・外れる場合の手取り差額をシミュレーション。
+								扶養控除38万円の有無で所得税・住民税がどう変わるかを確認できます。
+							</p>
+						</div>
+						<div>
+							<p className="font-medium text-foreground">副業収入の手取り確認</p>
+							<p className="mt-1 leading-relaxed">
+								本業月収25万 + 副業月収5万の場合、実際の手取りがどう変化するかを把握。
+								副業収入が20万円を超えると確定申告が必要になる点も合わせて覚えておきましょう。
+							</p>
+						</div>
+					</div>
+				</ArticleSection>
+
+				<ArticleSection id="faq" title="よくある質問">
+					<FaqAccordion items={[
+						{
+							question: "手取りは額面の何割くらいですか？",
+							answer: "一般的に75〜85%程度です。年収200〜400万円台は約80〜85%、年収600万円超になると累進課税の影響で75〜78%程度になります。"
+						},
+						{
+							question: "ボーナスの手取りはどう計算しますか？",
+							answer: "ボーナスからも社会保険料と所得税が引かれます。ただし住民税はボーナスから天引きされません（月次で特別徴収）。このツールは月給・年収を前提とした概算です。"
+						},
+						{
+							question: "都道府県で手取りは変わりますか？",
+							answer: "健康保険料率は都道府県によって異なります（協会けんぽの場合）。本ツールは概算のため全国共通の料率を使用しています。正確な計算は加入の健康保険組合に確認してください。"
+						},
+						{
+							question: "年収いくらから手取りの割合が下がりますか？",
+							answer: "累進課税の影響で年収600〜700万円台から所得税率が上がり始め、年収850万円超で給与所得控除の上限（195万円）に達するため手取り率が顕著に下がります。"
+						},
+						{
+							question: "副業の収入も一緒に入れてよいですか？",
+							answer: "本ツールは給与所得を前提としています。事業所得（フリーランス・副業）は計算方式が異なります。給与以外の収入がある場合は確定申告での正確な計算をお勧めします。"
+						}
+					]} />
+				</ArticleSection>
+
+				<ArticleSection id="related" title="関連ツール">
+					<RelatedTools
+						slugs={["106wall", "furusato-tax", "tax-calc"]}
+						tip="ふるさと納税の控除上限額も年収から計算できます。手取りを最大化するなら併用がおすすめです。"
+					/>
+				</ArticleSection>
+
+				<ArticleSection id="cta" title="最後に">
+					<p className="leading-relaxed">
+						手取り額は社保料率の改定や税制変更で毎年変わります。転職・扶養調整・副業開始など収入が変わるタイミングにぜひ活用してください。
+						他にも業務で使える無料計算ツールを揃えています。ぜひ試してみてください。
 					</p>
-					<p>
-						<strong>基礎控除</strong>：48万円（2020年度改正後）
-					</p>
-					<p>
-						<strong>扶養控除</strong>：38万円 × 扶養人数（一般扶養控除）
-					</p>
-					<p>
-						<strong>所得税</strong>
-						：課税所得に対して5%〜45%の超過累進課税（復興特別所得税2.1%を加算）
-					</p>
-					<p>
-						<strong>住民税</strong>：課税所得 × 10%（概算。均等割は含まず）
-					</p>
-					<p>
-						<strong>課税所得</strong> = 年収 − 給与所得控除 − 社会保険料合計 −
-						基礎控除 − 扶養控除
-					</p>
-				</div>
+					<p className="text-xs text-muted-foreground mt-2">最終更新：2026年4月</p>
+				</ArticleSection>
 			</div>
 		</ToolLayout>
 	);

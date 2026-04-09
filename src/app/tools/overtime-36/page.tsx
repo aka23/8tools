@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import { ToolLayout } from "@/components/tools/ToolLayout";
+import { ArticleSection } from "@/components/tools/ArticleSection";
+import { FaqAccordion } from "@/components/tools/FaqAccordion";
+import { RelatedTools } from "@/components/tools/RelatedTools";
 
 const MONTH_LIMIT = 45;
 const ANNUAL_LIMIT = 360;
@@ -167,28 +170,114 @@ export default function Overtime36Page() {
 					</div>
 				)}
 
-				<div className="mt-8 space-y-3 text-sm text-muted-foreground">
-					<h2 className="text-base font-semibold text-foreground">
-						36協定について
-					</h2>
-					<p>
-						労働基準法第36条に基づく「時間外労働・休日労働に関する協定」（36協定）では、
-						時間外労働の上限が法律で定められています。
+				<ArticleSection id="intro" title="こんなときに便利です">
+					<p className="leading-relaxed">
+						「毎月のExcel集計、本当に合ってますか？」月45時間・年360時間の上限を手計算で管理している管理職・人事担当者は多いですが、集計ミスや見落としが起きやすい状況です。
 					</p>
-					<p>
-						<strong>原則の上限</strong>
+					<p className="leading-relaxed">
+						違反時は6ヶ月以下の懲役または30万円以下の罰金というプレッシャーも。月別の残業時間を入力するだけで、月上限・年上限との差分が一目でわかります。
 					</p>
-					<ul className="list-disc list-inside space-y-1 ml-2">
-						<li>月45時間以内</li>
-						<li>年360時間以内</li>
+				</ArticleSection>
+
+				<ArticleSection id="how-to-use" title="使い方（4ステップ）">
+					<ol className="list-decimal list-inside space-y-2 leading-relaxed">
+						<li>1月〜12月の各月の残業時間を入力（例：1月=35時間、2月=42時間…）</li>
+						<li>「集計する」ボタンを押す</li>
+						<li>月別表で上限45時間との差分を確認（超過月は赤背景+「超過」バッジで表示）</li>
+						<li>年間合計と360時間上限との差分をサマリーで確認</li>
+					</ol>
+					<div className="bg-secondary/50 border border-border rounded-lg p-4 mt-2">
+						<p className="text-xs font-medium text-foreground mb-1">入力例</p>
+						<p>繁忙期の3月に50時間入力 → 月上限を5時間超過（赤表示）、年間累計180時間で年上限まで180時間の余裕あり</p>
+					</div>
+				</ArticleSection>
+
+				<ArticleSection id="background" title="36協定の上限規制と罰則">
+					<p className="leading-relaxed">
+						労働基準法第36条に基づく36協定は、2019年4月に法的上限が設けられました。それ以前は「事実上青天井」だった残業時間に罰則付きの上限が適用されます。
+					</p>
+					<p className="font-medium text-foreground mt-2">上限の種類</p>
+					<ul className="list-disc list-inside space-y-1">
+						<li>原則：月45時間以内・年360時間以内</li>
+						<li>特別条項あり：年720時間・単月100時間未満・2〜6ヶ月平均80時間以内</li>
+						<li>違反時：6ヶ月以下の懲役または30万円以下の罰金（労基法119条）</li>
 					</ul>
-					<p>
-						特別条項付き36協定を締結した場合でも、年間720時間・単月100時間未満・複数月平均80時間以内という上限が適用されます（2019年4月施行）。
+					<div className="border-l-4 border-primary bg-secondary/50 p-4 rounded-r-lg mt-4">
+						<p className="text-sm font-medium text-foreground mb-1">注意ポイント：特別条項の「年6回」制限</p>
+						<p>特別条項があっても月45時間を超えられるのは年6回まで。7回目の超過で特別条項違反になりますが、このカウントは意外と見落とされがちです。月別の超過回数を本ツールで定期チェックすることをお勧めします。</p>
+					</div>
+				</ArticleSection>
+
+				<ArticleSection id="use-cases" title="こんなケースで使われています">
+					<div className="space-y-4">
+						<div>
+							<p className="font-medium text-foreground">建設業の現場監督による月次管理</p>
+							<p className="mt-1 leading-relaxed">
+								繁忙期の3月・9月に残業が集中する建設現場。月ごとの推移を可視化して、閑散期に残業を抑える計画立案に活用。
+								2024年4月から建設業も一般業種と同じ上限が適用されたため、より厳密な管理が必要になりました。
+							</p>
+						</div>
+						<div>
+							<p className="font-medium text-foreground">中小企業の人事担当者による早期警告</p>
+							<p className="mt-1 leading-relaxed">
+								10人の部署の残業時間を月次でこのツールに入力し、年間上限を超えそうな社員を早期発見。
+								対策が後手に回る前に、月20〜30時間超えの時点でシフト調整や業務分散を検討できます。
+							</p>
+						</div>
+						<div>
+							<p className="font-medium text-foreground">管理職の部下残業管理</p>
+							<p className="mt-1 leading-relaxed">
+								管理監督者自身は36協定の適用外ですが、部下の残業管理責任があります。
+								部下全員分を月1回このツールで確認することで、労基署への対応や報告書作成をスムーズに行えます。
+							</p>
+						</div>
+					</div>
+				</ArticleSection>
+
+				<ArticleSection id="faq" title="よくある質問">
+					<FaqAccordion items={[
+						{
+							question: "36協定の上限を超えたらどうなりますか？",
+							answer: "労働基準法119条により、6ヶ月以下の懲役または30万円以下の罰金が科される可能性があります。また、労働基準監督署の是正勧告・指導の対象にもなります。"
+						},
+						{
+							question: "特別条項があれば月45時間を超えてもいいですか？",
+							answer: "超えられるのは年6回まで。かつ単月100時間未満、2〜6ヶ月の平均が80時間以内という条件もあります。年7回目の超過は特別条項があっても違反です。"
+						},
+						{
+							question: "管理監督者は36協定の対象ですか？",
+							answer: "管理監督者は36協定の適用除外ですが、深夜割増賃金（22時〜5時）は適用されます。また「名ばかり管理職」問題があり、実態が管理監督者に当たらない場合は適用対象です。"
+						},
+						{
+							question: "休日労働は月45時間に含まれますか？",
+							answer: "法定休日労働（週1日の法定休日）は月45時間・年360時間の上限には含まれません。ただし年720時間の上限と単月100時間未満の計算には含まれます。"
+						},
+						{
+							question: "建設業・運送業の上限は違いますか？",
+							answer: "2024年4月から猶予期間が終了し、建設業・運送業・医師も一般業種と同じ上限規制が適用されるようになりました。"
+						},
+						{
+							question: "このツールに入力したデータは保存されますか？",
+							answer: "ブラウザ上で計算するのみです。入力したデータはサーバーに送信されず、ページを閉じると消えます。"
+						}
+					]} />
+				</ArticleSection>
+
+				<ArticleSection id="related" title="関連ツール">
+					<RelatedTools
+						slugs={["take-home-pay", "shift-labor-cost", "man-day"]}
+						tip="残業が多い月の人件費への影響は「シフト人件費計算」で確認できます。"
+					/>
+				</ArticleSection>
+
+				<ArticleSection id="cta" title="最後に">
+					<p className="leading-relaxed">
+						36協定の管理は違反リスクを避けるだけでなく、社員の健康と働きやすさにも直結します。
+						月1回の定期チェックにぜひお役立てください。
+						他にも業務で使える無料計算ツールを揃えています。ぜひ試してみてください。
 					</p>
-					<p>
-						上限を超えた場合、6ヶ月以下の懲役または30万円以下の罰金が科される可能性があります。
-					</p>
-				</div>
+					<p className="text-xs text-muted-foreground mt-2">最終更新：2026年4月</p>
+				</ArticleSection>
 			</div>
 		</ToolLayout>
 	);
