@@ -16,7 +16,7 @@ export default function PrivacyPage() {
 							個人情報の取り扱いについて
 						</h2>
 						<p>
-							8tools.org（以下「当サイト」）は、ユーザーのプライバシーを尊重し、個人情報の保護に努めます。
+							8TOOLS（以下「当サイト」）は、ユーザーのプライバシーを尊重し、個人情報の保護に努めます。
 						</p>
 					</section>
 					<section>

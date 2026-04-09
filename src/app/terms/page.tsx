@@ -14,7 +14,7 @@ export default function TermsPage() {
 					<section>
 						<h2 className="text-lg font-semibold mb-2">第1条（適用）</h2>
 						<p>
-							本規約は、8tools.org（以下「当サイト」）が提供するすべてのサービスの利用条件を定めるものです。
+							本規約は、8TOOLS（以下「当サイト」）が提供するすべてのサービスの利用条件を定めるものです。
 							ユーザーは本規約に同意の上、当サイトをご利用ください。
 						</p>
 					</section>
