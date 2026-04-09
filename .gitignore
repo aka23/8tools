@@ -36,8 +36,11 @@ yarn-error.log*
 # vercel
 .vercel
 
-# omc state
-.omc/state/
+# omc
+.omc/
+
+# claude local settings
+.claude/settings.local.json
 
 # typescript
 *.tsbuildinfo

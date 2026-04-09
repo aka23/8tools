@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "WebSearch",
-      "mcp__stitch__list_projects",
-      "WebFetch(domain:gist.github.com)"
-    ]
-  }
-}

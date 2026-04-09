@@ -1,5 +1,0 @@
-# Ralph Progress — 8tools.org
-
-## Iteration 1
-- Starting from empty project (only CLAUDE.md + wiki/)
-- PRD: 11 tools, 6 page types, white+red design
