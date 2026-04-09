@@ -39,8 +39,11 @@ yarn-error.log*
 # omc
 .omc/
 
-# claude local settings
-.claude/settings.local.json
+# claude (PRD・ローカル設定)
+.claude/
+
+# wiki (内部ナレッジベース)
+wiki/
 
 # typescript
 *.tsbuildinfo

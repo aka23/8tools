@@ -1,6 +1,8 @@
 {
-  "name": "8tools-scaffold",
-  "version": "0.1.0",
+  "name": "8tools",
+  "version": "1.0.0",
+  "description": "業務で使える無料の計算・変換ツール集",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "next dev",
